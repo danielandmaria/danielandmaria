@@ -188,10 +188,8 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
   <div class="rsvp-inner">
     <div class="kicker">We hope you can join us</div><h2>RSVP</h2>
     <p>Please use the form below to let us know whether you’ll be joining us.</p>
-    <form id="rsvpForm" action="https://formsubmit.co/pardowedding2027@gmail.com" method="POST" novalidate="">
-      <input type="hidden" name="_subject" value="New Daniel &amp; Maria Wedding RSVP">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbxJrDSMg3TCkt9c_xuTaMCtFO_zX8Wr0_bf9aBw3ePA5Py_n4CY8srdnTU1-uOe4Wo3sQ/exec" method="POST" target="rsvpFrame" novalidate="">
+      
       <div class="form-grid">
         <div class="form-field"><label for="guestName">Full name *</label><input id="guestName" name="guestName" type="text" autocomplete="name" required=""></div>
         <div class="form-field"><label for="guestEmail">Email *</label><input id="guestEmail" name="guestEmail" type="email" autocomplete="email" required=""></div>
@@ -200,7 +198,8 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
         <div class="form-field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Anything else you’d like us to know?"></textarea></div>
       </div>
       <button class="btn" type="submit">Submit RSVP</button>
-      <div class="rsvp-note">Your RSVP will be emailed to pardowedding2027@gmail.com. The first submission may require a one-time activation of the form service from that inbox.</div>
+      <div class="rsvp-note">Your RSVP will be added to our private wedding RSVP list.</div>
+      <iframe name="rsvpFrame" id="rsvpFrame" title="RSVP submission" style="display:none"></iframe>
       <div id="rsvpSuccess" class="rsvp-success" role="status" aria-live="polite"></div>
     </form>
   </div>
@@ -208,9 +207,54 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
 </main>
 <script>
 const rsvpForm=document.getElementById('rsvpForm');
+const rsvpSuccess=document.getElementById('rsvpSuccess');
+const rsvpFrame=document.getElementById('rsvpFrame');
+let rsvpSubmitting=false;
+
 const savedRsvp=localStorage.getItem('danielMariaRsvp');
-if(savedRsvp){try{const data=JSON.parse(savedRsvp);Object.entries(data).forEach(([key,value])=>{const field=rsvpForm.elements[key];if(field)field.value=value;});}catch(_){}}
-rsvpForm.addEventListener('submit',function(event){if(!rsvpForm.checkValidity()){event.preventDefault();rsvpForm.reportValidity();return;}const data=Object.fromEntries(new FormData(rsvpForm).entries());localStorage.setItem('danielMariaRsvp',JSON.stringify(data));});
+if(savedRsvp){
+  try{
+    const data=JSON.parse(savedRsvp);
+    Object.entries(data).forEach(([key,value])=>{
+      const field=rsvpForm.elements[key];
+      if(field) field.value=value;
+    });
+  }catch(_){}
+}
+
+rsvpForm.addEventListener('submit',function(event){
+  rsvpSuccess.textContent='';
+
+  if(!rsvpForm.checkValidity()){
+    event.preventDefault();
+    rsvpForm.reportValidity();
+    return;
+  }
+
+  if(rsvpForm.action.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')){
+    event.preventDefault();
+    rsvpSuccess.textContent='RSVP setup is not complete yet. Add your Google Apps Script web app URL to the website code.';
+    return;
+  }
+
+  const data=Object.fromEntries(new FormData(rsvpForm).entries());
+  localStorage.setItem('danielMariaRsvp',JSON.stringify(data));
+
+  const submitButton=rsvpForm.querySelector('button[type="submit"]');
+  submitButton.disabled=true;
+  submitButton.textContent='Sending...';
+  rsvpSubmitting=true;
+});
+
+rsvpFrame.addEventListener('load',function(){
+  if(!rsvpSubmitting) return;
+  rsvpSubmitting=false;
+  const submitButton=rsvpForm.querySelector('button[type="submit"]');
+  submitButton.disabled=false;
+  submitButton.textContent='Submit RSVP';
+  rsvpSuccess.textContent='Thank you! Your RSVP has been received.';
+  rsvpForm.reset();
+});
 </script>
 <footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
 
