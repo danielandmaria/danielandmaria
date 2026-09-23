@@ -222,6 +222,7 @@ if(savedRsvp){
 rsvpForm.addEventListener('submit',async function(event){
   event.preventDefault();
   rsvpSuccess.textContent='';
+  rsvpSuccess.style.display='none';
 
   if(!rsvpForm.checkValidity()){
     rsvpForm.reportValidity();
@@ -244,10 +245,12 @@ rsvpForm.addEventListener('submit',async function(event){
     });
 
     rsvpSuccess.textContent='Thank you! Your RSVP has been received.';
+    rsvpSuccess.style.display='block';
     rsvpForm.reset();
     localStorage.removeItem('danielMariaRsvp');
   }catch(error){
     rsvpSuccess.textContent='We could not send your RSVP. Please try again.';
+    rsvpSuccess.style.display='block';
   }finally{
     submitButton.disabled=false;
     submitButton.textContent='Submit RSVP';
@@ -255,6 +258,7 @@ rsvpForm.addEventListener('submit',async function(event){
 });
 </script>
 <footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
+
 
 
 </body></html>
