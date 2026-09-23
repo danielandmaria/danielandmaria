@@ -119,6 +119,109 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
   .hero{padding-top:78px}.event{grid-template-columns:82px 1fr}h2{font-size:46px}.nav-inner{gap:14px}
   .card{padding:30px 24px}.hero-card{max-width:520px}
 }
+
+/* Rainforest-inspired editorial refresh */
+body{background:#fff8ee}
+nav{background:rgba(255,248,238,.90);border-bottom:1px solid rgba(48,66,54,.14)}
+nav a{font-size:10px;font-weight:600}
+.hero{
+  min-height:100vh;
+  padding:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  position:relative;
+  background:
+    linear-gradient(180deg,rgba(16,25,18,.08) 28%,rgba(16,25,18,.58) 100%),
+    url('couple-1.jpg') center 44%/cover no-repeat;
+}
+.hero::before,.hero::after{display:none}
+.hero-card{display:none}
+.hero-overlay{
+  width:100%;
+  text-align:center;
+  color:#fff;
+  padding:140px 24px 62px;
+  position:relative;
+  z-index:1;
+}
+.hero-eyebrow{
+  margin:0 0 12px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.hero-names{
+  margin:0;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(72px,11vw,150px);
+  font-weight:500;
+  line-height:.82;
+  text-shadow:0 3px 24px rgba(0,0,0,.22);
+}
+.hero-meta{
+  margin:26px 0 0;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.hero-scroll{
+  display:inline-block;
+  margin-top:28px;
+  color:#fff;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,.65);
+  padding-bottom:4px;
+}
+main>section{background:#fff8ee}
+main>section:nth-of-type(even):not(.rsvp){background:#fffdf7}
+section{max-width:none;padding:105px max(24px,calc((100vw - 1080px)/2))}
+section:not(.rsvp)::before{background:#7A8352;width:54px;height:1px}
+.kicker{color:#657044}
+h2{font-size:clamp(48px,6vw,68px)}
+.detail,.card{background:#fffdf8;border-color:rgba(76,87,55,.18);box-shadow:none}
+.detail strong,.card h3,.event h3{color:#465233}
+.time{color:#7A8352}
+.btn{background:#465233}
+.btn:hover{background:#7A8352}
+.landscape-break{
+  min-height:62vh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:60px 24px;
+  background:
+    linear-gradient(180deg,rgba(20,33,22,.06) 35%,rgba(20,33,22,.56) 100%),
+    url('rainforest-puerto-rico.jpg') center 56%/cover no-repeat;
+  background-attachment:fixed;
+}
+.landscape-copy{max-width:900px;width:100%;text-align:center;color:white}
+.landscape-copy .kicker{color:#fff7df;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+.landscape-title{
+  margin:8px auto 0;
+  max-width:780px;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(38px,6vw,72px);
+  line-height:1;
+  text-shadow:0 2px 18px rgba(0,0,0,.28);
+}
+.rsvp{background:#7A8352}
+.rsvp-inner{max-width:780px}
+.rsvp-success{border-radius:14px}
+footer{background:#fff8ee}
+@media(max-width:720px){
+  .hero{min-height:88vh;background-position:50% center}
+  .hero-overlay{padding:120px 18px 42px}
+  .hero-names{font-size:clamp(58px,18vw,92px)}
+  .hero-meta{font-size:10px;letter-spacing:.12em}
+  .landscape-break{min-height:54vh;background-attachment:scroll;background-position:60% center}
+  section{padding:82px 22px}
+}
+
 </style>
 </head>
 <body>
@@ -126,18 +229,30 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
 <a href="#weekend">Wedding</a><a href="#travel">Travel</a><a href="#stay">Accommodations</a><a href="#dress">Dress Code</a><a href="photos.html">Photos</a><a href="#rsvp">RSVP</a>
 </div></nav>
 
-<header class="hero">
-  <div class="hero-card"><img src="save-the-date.png" alt="Daniel and Maria save the date: November 7, 2027, The Serene House, Luquillo, Puerto Rico"></div>
+<header class="hero" role="img" aria-label="Daniel and Maria together in Kyoto, Japan">
+  <div class="hero-overlay">
+    <div class="hero-eyebrow">We're getting married</div>
+    <h1 class="hero-names">Daniel &amp; Maria</h1>
+    <div class="hero-meta">November 7, 2027 · Luquillo, Puerto Rico</div>
+    <a class="hero-scroll" href="#welcome">Our wedding</a>
+  </div>
 </header>
 
 <main>
-<section>
+<section id="welcome">
   <div class="intro">
     <div class="kicker">We're getting married</div>
     <h2>We can't wait to celebrate with you.</h2>
     <p>Our wedding weekend will take place in beautiful Luquillo, Puerto Rico. We’re so excited to gather our favourite people for good food, music, dancing, and a little tropical escape.</p>
   </div>
 </section>
+
+<div class="landscape-break" role="img" aria-label="Mountain and rainforest view in Puerto Rico">
+  <div class="landscape-copy">
+    <div class="kicker">Puerto Rico</div>
+    <div class="landscape-title">A tropical weekend in the mountains &amp; by the sea</div>
+  </div>
+</div>
 
 <section id="weekend">
   <div class="center"><div class="kicker">The wedding</div><h2>November 7, 2027</h2><p>The Serene House · Luquillo, Puerto Rico</p></div>
@@ -193,7 +308,7 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
       <div class="form-grid">
         <div class="form-field"><label for="guestName">Full name *</label><input id="guestName" name="guestName" type="text" autocomplete="name" required=""></div>
         <div class="form-field"><label for="guestEmail">Email *</label><input id="guestEmail" name="guestEmail" type="email" autocomplete="email" required=""></div>
-        <div class="form-field full"><label for="attendance">Will you attend? *</label><select id="attendance" name="attendance" required=""><option value="">Select one</option><option value="yes">Accepts</option><option value="no">Regretfully declines</option></select></div>
+        <div class="form-field full"><label for="attendance">Will you attend? *</label><select id="attendance" name="attendance" required=""><option value="">Select one</option><option value="yes">Accept</option><option value="no">Decline</option></select></div>
         <div class="form-field full"><label for="dietary">Dietary restrictions</label><input id="dietary" name="dietary" type="text" placeholder="Allergies, vegetarian, vegan, etc."></div>
         <div class="form-field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Anything else you’d like us to know?"></textarea></div>
       </div>
