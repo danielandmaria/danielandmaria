@@ -200,61 +200,58 @@ footer{text-align:center;padding:54px 20px;font-family:"Cormorant Garamond",Geor
       <button class="btn" type="submit">Submit RSVP</button>
       <div class="rsvp-note">Your RSVP will be added to our private wedding RSVP list.</div>
       <div id="rsvpSuccess" class="rsvp-success" role="status" aria-live="polite"></div>
+      <iframe name="rsvpFrame" id="rsvpFrame" title="RSVP submission" style="display:none"></iframe>
     </form>
   </div>
 </section>
 </main>
 <script>
-const rsvpForm=document.getElementById('rsvpForm');
-const rsvpSuccess=document.getElementById('rsvpSuccess');
+const rsvpForm = document.getElementById('rsvpForm');
+const rsvpSuccess = document.getElementById('rsvpSuccess');
+const rsvpFrame = document.getElementById('rsvpFrame');
+const submitButton = rsvpForm.querySelector('button[type="submit"]');
+let rsvpSubmitted = false;
 
-const savedRsvp=localStorage.getItem('danielMariaRsvp');
-if(savedRsvp){
-  try{
-    const data=JSON.parse(savedRsvp);
-    Object.entries(data).forEach(([key,value])=>{
-      const field=rsvpForm.elements[key];
-      if(field) field.value=value;
+const savedRsvp = localStorage.getItem('danielMariaRsvp');
+if (savedRsvp) {
+  try {
+    const data = JSON.parse(savedRsvp);
+    Object.entries(data).forEach(([key, value]) => {
+      const field = rsvpForm.elements[key];
+      if (field) field.value = value;
     });
-  }catch(_){}
+  } catch (_) {}
 }
 
-rsvpForm.addEventListener('submit',async function(event){
-  event.preventDefault();
-  rsvpSuccess.textContent='';
-  rsvpSuccess.style.display='none';
-
-  if(!rsvpForm.checkValidity()){
+rsvpForm.addEventListener('submit', function(event) {
+  if (!rsvpForm.checkValidity()) {
+    event.preventDefault();
     rsvpForm.reportValidity();
     return;
   }
 
-  const action=rsvpForm.action;
-  const data=Object.fromEntries(new FormData(rsvpForm).entries());
-  localStorage.setItem('danielMariaRsvp',JSON.stringify(data));
+  const data = Object.fromEntries(new FormData(rsvpForm).entries());
+  localStorage.setItem('danielMariaRsvp', JSON.stringify(data));
 
-  const submitButton=rsvpForm.querySelector('button[type="submit"]');
-  submitButton.disabled=true;
-  submitButton.textContent='Sending...';
+  rsvpSubmitted = true;
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+  rsvpSuccess.textContent = 'Sending your RSVP...';
+  rsvpSuccess.style.display = 'block';
+});
 
-  try{
-    await fetch(action,{
-      method:'POST',
-      body:new FormData(rsvpForm),
-      mode:'no-cors'
-    });
+rsvpFrame.addEventListener('load', function() {
+  if (!rsvpSubmitted) return;
 
-    rsvpSuccess.textContent='Thank you! Your RSVP has been received.';
-    rsvpSuccess.style.display='block';
-    rsvpForm.reset();
-    localStorage.removeItem('danielMariaRsvp');
-  }catch(error){
-    rsvpSuccess.textContent='We could not send your RSVP. Please try again.';
-    rsvpSuccess.style.display='block';
-  }finally{
-    submitButton.disabled=false;
-    submitButton.textContent='Submit RSVP';
-  }
+  rsvpSuccess.textContent = 'Thank you! Your RSVP has been received.';
+  rsvpSuccess.style.display = 'block';
+  rsvpForm.reset();
+  localStorage.removeItem('danielMariaRsvp');
+  submitButton.disabled = false;
+  submitButton.textContent = 'Submit RSVP';
+  rsvpSubmitted = false;
+
+  rsvpSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
 </script>
 <footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
