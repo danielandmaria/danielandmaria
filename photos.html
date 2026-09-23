@@ -7,62 +7,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
-:root{--ink:#22201e;--cream:#fbf8f1;--paper:#fffdf9;--sage:#73856f;--line:#ddd7cb}
+:root{--ink:#231f1d;--cream:#fffaf3;--paper:#fffdf9;--leaf:#73856f;--leaf-dark:#304236;--coral:#e7644c;--orange:#f39a3f;--blush:#efc6c2;--lime:#9bbf33;--line:rgba(73,92,62,.18)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:Montserrat,Arial,sans-serif;line-height:1.7}
+body{margin:0;color:var(--ink);font-family:Montserrat,Arial,sans-serif;line-height:1.7;background:radial-gradient(circle at 8% 12%,rgba(231,100,76,.10),transparent 24%),radial-gradient(circle at 92% 24%,rgba(155,191,51,.12),transparent 25%),radial-gradient(circle at 10% 82%,rgba(239,198,194,.18),transparent 25%),var(--cream)}
 a{color:inherit}
-nav{position:fixed;z-index:20;top:0;left:0;right:0;background:rgba(251,248,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,32,30,.12)}
-.nav-inner{max-width:1050px;margin:auto;display:flex;justify-content:center;gap:30px;padding:14px 20px;flex-wrap:wrap}
-nav a{text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-size:10px}
-main{max-width:1180px;margin:auto;padding:130px 24px 90px}
-.intro{text-align:center;max-width:700px;margin:0 auto 55px}
-.kicker{text-transform:uppercase;letter-spacing:.25em;font-size:10px}
-h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;font-size:64px;margin:12px 0 18px}
-.intro p{margin:0;color:#5e5954}
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-.photo{margin:0;overflow:hidden;background:var(--paper);box-shadow:0 12px 35px rgba(34,32,30,.08);cursor:pointer}
-.photo:nth-child(1){grid-column:1/-1}
-.photo:nth-child(2){grid-column:1/7}
-.photo:nth-child(3){grid-column:7/13}
-.photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
-.photo:hover img{transform:scale(1.02)}
-.photo:nth-child(1) img{aspect-ratio:16/9}
-.photo:nth-child(2) img,.photo:nth-child(3) img{aspect-ratio:4/3}
-.back{text-align:center;margin-top:52px}.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:14px 25px;text-transform:uppercase;letter-spacing:.13em;font-size:10px}
-footer{text-align:center;padding:40px 20px 50px;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px}.small{font-family:Montserrat,Arial,sans-serif;font-size:11px;color:#777}
-.lightbox{position:fixed;inset:0;background:rgba(20,19,18,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:30px}
-.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain}.close{position:absolute;right:24px;top:18px;border:0;background:none;color:white;font-size:36px;cursor:pointer;line-height:1}
-@media(max-width:720px){.nav-inner{gap:14px}main{padding-top:115px}h1{font-size:48px}.gallery{display:block}.photo{margin-bottom:18px}.photo img{aspect-ratio:auto!important}}
+nav{position:fixed;z-index:20;top:0;left:0;right:0;background:rgba(255,250,243,.89);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:auto;display:flex;justify-content:center;gap:28px;padding:14px 20px;flex-wrap:wrap}
+nav a{text-decoration:none;text-transform:uppercase;letter-spacing:.16em;font-size:10px}nav a:hover{color:var(--coral)}
+main{max-width:1180px;margin:auto;padding:135px 24px 95px}
+.intro{text-align:center;max-width:720px;margin:0 auto 58px}.intro::before{content:"";display:block;width:42px;height:2px;margin:0 auto 26px;background:linear-gradient(90deg,var(--coral),var(--orange),var(--lime))}
+.kicker{text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:var(--leaf-dark);font-weight:600}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:.98;font-size:clamp(72px,9vw,112px);margin:12px 0 22px}.intro p{margin:0;color:#605a55;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-style:italic}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.photo{margin:0;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:0 14px 38px rgba(67,106,75,.10);cursor:pointer;border-radius:30px 8px 30px 8px}
+.photo:nth-child(1){grid-column:1/-1}.photo:nth-child(2){grid-column:1/7}.photo:nth-child(3){grid-column:7/13}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}.photo:hover img{transform:scale(1.02)}
+.photo:nth-child(1) img{aspect-ratio:16/9}.photo:nth-child(2) img,.photo:nth-child(3) img{aspect-ratio:4/3}
+.back{text-align:center;margin-top:56px}.btn{display:inline-block;background:var(--leaf-dark);color:#fff;text-decoration:none;padding:15px 27px;text-transform:uppercase;letter-spacing:.14em;font-size:10px;border-radius:999px}.btn:hover{background:var(--coral)}
+footer{text-align:center;padding:46px 20px 54px;font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;background:rgba(255,253,249,.55)}.small{font-family:Montserrat,Arial,sans-serif;font-size:11px;color:#777}
+.lightbox{position:fixed;inset:0;background:rgba(24,28,23,.95);display:none;align-items:center;justify-content:center;z-index:100;padding:30px}.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain}.close{position:absolute;right:24px;top:18px;border:0;background:none;color:white;font-size:36px;cursor:pointer;line-height:1}
+@media(max-width:720px){.nav-inner{gap:14px}main{padding-top:118px}h1{font-size:58px}.intro p{font-size:20px}.gallery{display:block}.photo{margin-bottom:18px}.photo img{aspect-ratio:auto!important}}
 </style>
 </head>
 <body>
-<nav><div class="nav-inner">
-<a href="index_with_photos.html#weekend">Wedding</a><a href="index_with_photos.html#travel">Travel</a><a href="index_with_photos.html#stay">Accommodations</a><a href="index_with_photos.html#dress">Dress Code</a><a href="photos.html">Photos</a><a href="index_with_photos.html#rsvp">RSVP</a>
-</div></nav>
+<nav><div class="nav-inner"><a href="index.html#weekend">Wedding</a><a href="index.html#travel">Travel</a><a href="index.html#stay">Accommodations</a><a href="index.html#dress">Dress Code</a><a href="photos.html">Photos</a><a href="index.html#rsvp">RSVP</a></div></nav>
 <main>
-  <div class="intro">
-    <div class="kicker">Daniel &amp; Maria</div>
-    <h1>A few of our favourite moments.</h1>
-    <p>A little glimpse of us before we celebrate together in Puerto Rico.</p>
-  </div>
+  <div class="intro"><div class="kicker">Our Photos</div><h1>Daniel &amp; Maria</h1><p>A few moments from our engagement in Kyoto, Japan</p></div>
   <div class="gallery">
     <figure class="photo"><img src="couple-1.jpg" alt="Daniel and Maria together in front of a traditional gate" loading="eager"></figure>
     <figure class="photo"><img src="couple-2.jpg" alt="Daniel and Maria smiling together in a garden" loading="lazy"></figure>
     <figure class="photo"><img src="couple-3.jpg" alt="Daniel and Maria holding hands in a lush garden" loading="lazy"></figure>
   </div>
-  <div class="back"><a class="btn" href="index_with_photos.html">Back to wedding details</a></div>
+  <div class="back"><a class="btn" href="index.html">Back to wedding details</a></div>
 </main>
 <footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
 <div class="lightbox" id="lightbox" aria-hidden="true"><button class="close" aria-label="Close photo">×</button><img src="" alt="Expanded gallery photo"></div>
 <script>
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=lightbox.querySelector('img');
-document.querySelectorAll('.photo img').forEach(img=>img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');}));
-function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src='';}
-lightbox.querySelector('.close').addEventListener('click',closeLightbox);
-lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+const lightbox=document.getElementById('lightbox');const lightboxImg=lightbox.querySelector('img');document.querySelectorAll('.photo img').forEach(img=>img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');}));function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src='';}lightbox.querySelector('.close').addEventListener('click',closeLightbox);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 </script>
 
 
 </body></html>
+
