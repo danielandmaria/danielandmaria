@@ -32,6 +32,17 @@ h2{font-size:56px;margin:10px 0 20px}h3{font-size:31px;margin:0 0 10px}
 .time{text-transform:uppercase;letter-spacing:.12em;font-size:10px;padding-top:5px}
 .btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:14px 25px;text-transform:uppercase;letter-spacing:.13em;font-size:10px;margin-top:12px}
 .tbd{font-style:italic;color:#777}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left;margin-top:30px}
+.form-field{display:flex;flex-direction:column;gap:7px}.form-field.full{grid-column:1/-1}
+.form-field label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#edf0ea}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font:inherit;border-radius:0;outline:none}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.65)}
+.form-field select option{color:#22201e}
+.form-field textarea{min-height:110px;resize:vertical}
+.rsvp-note{font-size:11px;color:#dfe6df;margin-top:14px}
+.rsvp-success{display:none;margin-top:24px;padding:18px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
+.inspo-link{display:inline-block;margin-top:12px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:720px){.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
 .rsvp{max-width:none;background:#304236;color:white}
 .rsvp-inner{max-width:850px;margin:auto;text-align:center;padding:95px 24px}
 .rsvp h2{color:#fff}.rsvp p{color:#edf0ea}.rsvp .btn{background:var(--cream);color:var(--ink)}
@@ -42,7 +53,7 @@ footer{text-align:center;padding:48px 20px;font-family:"Cormorant Garamond",Geor
 </head>
 <body>
 <nav><div class="nav-inner">
-<a href="#weekend">Wedding</a><a href="#travel">Travel</a><a href="#stay">Accommodations</a><a href="#dress">Dress Code</a><a href="#rsvp">RSVP</a>
+<a href="#weekend">Wedding</a><a href="#travel">Travel</a><a href="#stay">Accommodations</a><a href="#dress">Dress Code</a><a href="photos.html">Photos</a><a href="#rsvp">RSVP</a>
 </div></nav>
 
 <header class="hero">
@@ -66,8 +77,8 @@ footer{text-align:center;padding:48px 20px;font-family:"Cormorant Garamond",Geor
     <div class="detail"><strong>Luquillo</strong>Puerto Rico</div>
   </div>
   <div class="timeline">
-    <div class="event"><div class="time">[Time]</div><div><h3>Ceremony</h3><p>Join us as we say “I do.”</p></div></div>
-    <div class="event"><div class="time">[Time]</div><div><h3>Cocktails</h3><p>Drinks, snacks and time to mingle.</p></div></div>
+    <div class="event"><div class="time">TBD</div><div><h3>Ceremony</h3><p>Join us as we say “I do.”</p></div></div>
+    <div class="event"><div class="time">TBD</div><div><h3>Cocktails</h3><p>Drinks, snacks and time to mingle.</p></div></div>
     <div class="event"><div class="time">[Time]</div><div><h3>Dinner &amp; Dancing</h3><p>Good food, music and celebrating together.</p></div></div>
   </div>
 </section>
@@ -79,7 +90,7 @@ footer{text-align:center;padding:48px 20px;font-family:"Cormorant Garamond",Geor
       <p><strong>Airport:</strong> Luis Muñoz Marín International Airport (SJU)</p>
     </div>
     <div class="card"><h3>Weekend guide</h3>
-      <ul><li>Arrival: [Date]</li><li>Welcome gathering: [Date / Time]</li><li>Wedding: November 7, 2027</li><li>Departure: [Date]</li></ul>
+      <p class="tbd">TBD</p>
     </div>
   </div>
 </section>
@@ -93,21 +104,67 @@ footer{text-align:center;padding:48px 20px;font-family:"Cormorant Garamond",Geor
 
 <section id="dress">
   <div class="two">
-    <div class="card"><div class="kicker">Dress code</div><h3>[Dress Code — TBD]</h3><p>We’ll share more details about the wedding-day attire soon.</p></div>
-    <div class="card"><div class="kicker">Registry</div><h3>Your presence is enough.</h3><p>Registry information will be added closer to the wedding.</p></div>
+    <div class="card">
+      <div class="kicker">Dress code</div>
+      <h3>Tropical Formal</h3>
+      <p>We invite you to embrace the colors of Puerto Rico. Think vibrant greens, sunset oranges, soft yellows, bold pinks, and blush tones.</p>
+      <p>Formal attire is encouraged—colorful, elegant, and ready for a tropical celebration.</p>
+      <p><strong>Color inspiration:</strong> Lime · Olive · Orange · Mango · Butter Yellow · Fuchsia · Blush</p>
+      <a class="inspo-link" href="https://ca.pinterest.com/pin/1114007657857091518/" target="_blank" rel="noopener">View dress code inspiration →</a>
+    </div>
+    <div class="card"><div class="kicker">Registry</div><h3>Your presence is enough.</h3></div>
   </div>
 </section>
 
 <section id="rsvp" class="rsvp">
   <div class="rsvp-inner">
     <div class="kicker">We hope you can join us</div><h2>RSVP</h2>
-    <p>Formal invitation to follow. RSVP details will be available here once invitations are sent.</p>
-    <a class="btn" href="#" onclick="alert('The RSVP form will be linked here once it is ready.');return false;">RSVP</a>
+    <p>Please use the form below to let us know whether you’ll be joining us. You can update your response later if plans change.</p>
+    <form id="rsvpForm" action="https://formsubmit.co/pardowedding2027@gmail.com" method="POST" novalidate="">
+      <input type="hidden" name="_subject" value="New Daniel &amp; Maria Wedding RSVP">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="form-grid">
+        <div class="form-field"><label for="guestName">Full name *</label><input id="guestName" name="guestName" type="text" autocomplete="name" required=""></div>
+        <div class="form-field"><label for="guestEmail">Email *</label><input id="guestEmail" name="guestEmail" type="email" autocomplete="email" required=""></div>
+        <div class="form-field"><label for="attendance">Will you attend? *</label><select id="attendance" name="attendance" required=""><option value="">Select one</option><option value="yes">Joyfully accepts</option><option value="no">Regretfully declines</option></select></div>
+        <div class="form-field full"><label for="dietary">Dietary restrictions</label><input id="dietary" name="dietary" type="text" placeholder="Allergies, vegetarian, vegan, etc."></div>
+        <div class="form-field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Anything else you’d like us to know?"></textarea></div>
+      </div>
+      <button class="btn" type="submit">Submit RSVP</button>
+      <div class="rsvp-note">Your RSVP will be emailed to pardowedding2027@gmail.com. The first submission may require a one-time activation of the form service from that inbox.</div>
+      <div id="rsvpSuccess" class="rsvp-success" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </section>
 </main>
+<script>
+const rsvpForm = document.getElementById('rsvpForm');
+const rsvpSuccess = document.getElementById('rsvpSuccess');
+
+const savedRsvp = localStorage.getItem('danielMariaRsvp');
+if (savedRsvp) {
+  try {
+    const data = JSON.parse(savedRsvp);
+    Object.entries(data).forEach(([key, value]) => {
+      const field = rsvpForm.elements[key];
+      if (field) field.value = value;
+    });
+  } catch (_) {}
+}
+
+rsvpForm.addEventListener('submit', function (event) {
+  if (!rsvpForm.checkValidity()) {
+    event.preventDefault();
+    rsvpForm.reportValidity();
+    return;
+  }
+
+  const data = Object.fromEntries(new FormData(rsvpForm).entries());
+  localStorage.setItem('danielMariaRsvp', JSON.stringify(data));
+});
+</script>
 <footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
 
 
 </body></html>
-
