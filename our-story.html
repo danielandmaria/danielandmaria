@@ -28,24 +28,21 @@ main{max-width:1050px;margin:auto;padding:80px 24px 100px}h2,h3{font-family:"Cor
 
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin:34px 0 70px}.story-grid.reverse .story-photo{order:2}.story-photo img{width:100%;display:block;border-radius:30px 8px 30px 8px;box-shadow:0 16px 40px rgba(34,32,30,.14)}.story-copy{padding:16px}.story-copy .kicker{color:var(--leaf-dark)}.coming{text-align:center;margin-top:40px}
 
-.timeline-wrap{margin:30px 0 80px;padding:54px 30px 60px;background:var(--leaf-dark);color:var(--cream);border-radius:34px 10px 34px 10px;overflow:hidden}.timeline-title{text-align:center;margin-bottom:46px}.timeline-title .kicker{color:#dce4d6}.timeline-title h2{color:var(--cream);margin-bottom:8px}
+.timeline-wrap{margin:30px 0 80px;padding:54px 30px 48px;background:var(--leaf-dark);color:var(--cream);border-radius:34px 10px 34px 10px;overflow:hidden}.timeline-title{text-align:center;margin-bottom:34px}.timeline-title .kicker{color:#dce4d6}.timeline-title h2{color:var(--cream);margin-bottom:8px}
 
-.timeline{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;padding:0 4px}.timeline:before{content:"";position:absolute;left:3%;right:3%;top:50%;height:2px;background:rgba(255,248,238,.72);transform:translateY(-1px)}
+.timeline-shell{position:relative}.timeline-viewport{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:0 4px}.timeline-viewport::-webkit-scrollbar{display:none}.timeline{position:relative;display:flex;gap:18px;width:max-content;padding:0 14px}.timeline:before{content:"";position:absolute;left:14px;right:14px;top:50%;height:2px;background:rgba(255,248,238,.72);transform:translateY(-1px)}
 
-.milestone{position:relative;height:370px;display:grid;grid-template-rows:170px 30px 170px;justify-items:center;text-align:center;z-index:1}.milestone:after{content:"";grid-row:2;align-self:center;justify-self:center;width:14px;height:14px;border-radius:50%;background:#eef1e9;border:2px solid var(--leaf-dark);z-index:2}
+.milestone{position:relative;flex:0 0 180px;height:400px;display:grid;grid-template-rows:185px 30px 185px;justify-items:center;text-align:center;z-index:1;scroll-snap-align:center}.milestone:after{content:"";grid-row:2;align-self:center;justify-self:center;width:14px;height:14px;border-radius:50%;background:#eef1e9;border:2px solid var(--leaf-dark);z-index:2}.milestone .content{display:flex;flex-direction:column;align-items:center;padding:0 4px}.milestone .year{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:1;margin-bottom:8px;color:#fff}.milestone .caption{font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;line-height:1.15;max-width:150px}.milestone .photo{width:140px;height:170px;object-fit:cover;border:3px solid rgba(255,255,255,.86);box-shadow:0 8px 20px rgba(0,0,0,.18)}.milestone:not(.lower) .content{grid-row:1;align-self:end;padding-bottom:16px}.milestone:not(.lower) .photo{grid-row:3;align-self:start;margin-top:16px}.milestone.lower .photo{grid-row:1;align-self:end;margin-bottom:16px}.milestone.lower .content{grid-row:3;align-self:start;padding-top:16px}
 
-.milestone .content{display:flex;flex-direction:column;align-items:center;padding:0 4px}.milestone .year{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:1;margin-bottom:8px;color:#fff}.milestone .caption{font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;line-height:1.15;max-width:150px}.milestone .photo{width:124px;height:154px;object-fit:cover;border:3px solid rgba(255,255,255,.86);box-shadow:0 8px 20px rgba(0,0,0,.18)}
-
-.milestone:not(.lower) .content{grid-row:1;align-self:end;padding-bottom:16px}.milestone:not(.lower) .photo{grid-row:3;align-self:start;margin-top:16px}.milestone.lower .photo{grid-row:1;align-self:end;margin-bottom:16px}.milestone.lower .content{grid-row:3;align-self:start;padding-top:16px}
+.timeline-controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:26px}.timeline-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.08);color:#fff;font-size:22px;line-height:1;cursor:pointer;transition:background .2s ease,transform .2s ease}.timeline-btn:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}.timeline-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}.timeline-btn:disabled{opacity:.32;cursor:default;transform:none}.timeline-hint{font-family:Montserrat,Arial,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:#dce4d6}
 
 .button{display:inline-block;background:var(--leaf-dark);color:#fff;text-decoration:none;padding:14px 24px;border-radius:999px;text-transform:uppercase;letter-spacing:.13em;font-size:10px;margin-top:14px}.button:hover{background:var(--coral)}
 
 footer{text-align:center;padding:52px 20px;font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;background:rgba(255,253,249,.65)}footer .small{font-family:Montserrat,Arial,sans-serif;font-size:11px;color:#777}
 
-@media(max-width:1050px) and (min-width:721px){.timeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 22px}.timeline:before{display:none}.milestone:after{display:none}.milestone{height:auto;min-height:370px}}
+@media(max-width:720px){.nav-inner{gap:12px}.page-hero{min-height:48vh;padding-top:115px}.page-hero.story{min-height:58vh}.story-grid{grid-template-columns:1fr}.story-grid.reverse .story-photo{order:0}main{padding:64px 20px 80px}h2{font-size:44px}.card{padding:28px 24px}.faq-list summary{font-size:24px}.timeline-wrap{padding:42px 12px 38px}.timeline-title{margin-bottom:28px}.timeline{gap:10px;padding:0 10px}.milestone{flex-basis:165px;height:380px;grid-template-rows:175px 30px 175px}.milestone .photo{width:132px;height:162px}.timeline-controls{margin-top:20px}.timeline-hint{font-size:8px}}
 
-@media(max-width:720px){.nav-inner{gap:12px}.page-hero{min-height:48vh;padding-top:115px}.page-hero.story{min-height:58vh}.story-grid{grid-template-columns:1fr}.story-grid.reverse .story-photo{order:0}main{padding:64px 20px 80px}h2{font-size:44px}.card{padding:28px 24px}.faq-list summary{font-size:24px}.timeline-wrap{padding:42px 18px}.timeline-title{margin-bottom:36px}.timeline{display:block;padding:0}.timeline:before{display:none}.milestone,.milestone.lower{height:auto;min-height:0;display:grid;grid-template-columns:120px 1fr;grid-template-rows:auto;gap:22px;align-items:center;justify-items:stretch;text-align:left;margin-bottom:36px}.milestone:last-child{margin-bottom:0}.milestone:after{display:none}.milestone .photo,.milestone:not(.lower) .photo,.milestone.lower .photo{grid-column:1;grid-row:1;width:120px;height:150px;margin:0;align-self:center;justify-self:center}.milestone .content,.milestone:not(.lower) .content,.milestone.lower .content{grid-column:2;grid-row:1;align-self:center;align-items:flex-start;padding:0;margin:0}.milestone .year{font-size:30px;margin-bottom:9px}.milestone .caption{font-size:19px;line-height:1.25;max-width:200px}}
-
+@media(prefers-reduced-motion:reduce){.timeline-viewport{scroll-behavior:auto}}
 </style>
 
 </head><body><nav><div class="nav-inner"><a href="index.html#weekend">Wedding</a><a href="index.html#travel">Travel</a><a href="index.html#stay">Accommodations</a><a href="index.html#dress">Dress Code</a><a href="our-story.html">Our Story</a><a href="photos.html">Photos</a><a href="faq.html">FAQ</a><a href="index.html#rsvp">RSVP</a></div></nav>
@@ -60,7 +57,7 @@ footer{text-align:center;padding:52px 20px;font-family:"Cormorant Garamond",Geor
 
 <div class="timeline-title"><div class="kicker">Through the years</div><h2>Our Timeline</h2></div>
 
-<div class="timeline">
+<div class="timeline-shell"><div class="timeline-viewport" id="timelineViewport" tabindex="0" aria-label="Our relationship timeline"><div class="timeline">
 
 <article class="milestone"><div class="content"><div class="year">2014</div><div class="caption">Our first photo together</div></div><img class="photo" src="2014.jpg" alt="Daniel and Maria in 2014"></article>
 
@@ -70,15 +67,35 @@ footer{text-align:center;padding:52px 20px;font-family:"Cormorant Garamond",Geor
 
 <article class="milestone lower"><img class="photo" src="2020.jpg" alt="Daniel and Maria in Dubai in 2020"><div class="content"><div class="year">2020</div><div class="caption">Dubai</div></div></article>
 
-<article class="milestone"><div class="content"><div class="year">2024</div><div class="caption">Daniel moves to Ontario &amp; Maria graduates medical school</div></div><img class="photo" src="2024.jpg" alt="Daniel and Maria celebrating Maria's medical school graduation in 2024"></article>
+<article class="milestone"><div class="content"><div class="year">2023</div><div class="caption">Portugal</div></div><img class="photo" src="2023.jpg" alt="Daniel and Maria in Portugal in 2023"></article>
 
-<article class="milestone lower"><img class="photo" src="2026.jpeg" alt="Daniel and Maria in Japan in 2026"><div class="content"><div class="year">2026</div><div class="caption">Engaged in Japan!!</div></div></article>
+<article class="milestone lower"><img class="photo" src="2024.jpg" alt="Daniel and Maria celebrating Maria's medical school graduation in 2024"><div class="content"><div class="year">2024</div><div class="caption">Daniel moves to Ontario &amp; Maria graduates medical school</div></div></article>
 
-</div></section>
+<article class="milestone"><div class="content"><div class="year">2026</div><div class="caption">Engagement in Japan</div></div><img class="photo" src="2026.jpeg" alt="Daniel and Maria in Japan in 2026"></article>
+
+</div></div><div class="timeline-controls"><button class="timeline-btn" id="timelinePrev" type="button" aria-label="Previous timeline items" disabled="">←</button><span class="timeline-hint">Swipe or use arrows</span><button class="timeline-btn" id="timelineNext" type="button" aria-label="Next timeline items">→</button></div></div></section>
 
 <div class="story-grid"><div class="story-photo"><img src="couple-2.jpg" alt="Daniel and Maria during their engagement trip in Kyoto, Japan"></div><div class="story-copy"><div class="kicker">Kyoto, Japan</div><h3>Our Engagement</h3><p>We got engaged in Kyoto, Japan. A few of our favorite moments from that trip are collected on our Photos page.</p><a class="button" href="photos.html">See Our Photos</a></div></div>
 
 <div class="story-grid reverse"><div class="story-photo"><img src="couple-1.jpeg" alt="Daniel and Maria together"></div><div class="story-copy"><div class="kicker">November 7, 2027</div><h3>What’s Next</h3><p>Our next chapter brings us to Puerto Rico, where we’ll celebrate the next chapter of the rest of our lives together with our favorite people.</p></div></div>
 
-</main><footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer>
+</main><footer>Daniel &amp; Maria<div class="small">November 7, 2027 · Luquillo, Puerto Rico</div></footer><script>
+(function(){
+  const viewport=document.getElementById('timelineViewport');
+  const prev=document.getElementById('timelinePrev');
+  const next=document.getElementById('timelineNext');
+  if(!viewport||!prev||!next)return;
+  function step(){return Math.max(150,Math.round(viewport.clientWidth*0.72));}
+  function update(){
+    const max=viewport.scrollWidth-viewport.clientWidth;
+    prev.disabled=viewport.scrollLeft<=4;
+    next.disabled=viewport.scrollLeft>=max-4;
+  }
+  prev.addEventListener('click',()=>viewport.scrollBy({left:-step(),behavior:'smooth'}));
+  next.addEventListener('click',()=>viewport.scrollBy({left:step(),behavior:'smooth'}));
+  viewport.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
 </body></html>
